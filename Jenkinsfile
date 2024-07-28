@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        GITHUB_REPO = '<Testmohamedsherif>'
-        GITHUB_CREDENTIALS = '<mohamedsherif02>'
+        GITHUB_REPO = 'mohamedsherif02/Testmohamedsherif'
+        GITHUB_CREDENTIALS = 'd326ca7e-a2bb-45c7-bf84-216d9a8d97bb'
     }
 
     stages {
@@ -36,7 +36,7 @@ pipeline {
         success {
             script {
                 def prNumber = env.CHANGE_ID
-                def commitSHA = env.CHANGE_TARGET
+                def commitSHA = env.GIT_COMMIT
                 def githubToken = credentials(GITHUB_CREDENTIALS)
                 
                 // Merge the pull request
