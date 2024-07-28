@@ -21,8 +21,19 @@ pipeline {
                 }
             }
         }
-post {
-       success {
+
+        stage('Test') {
+            steps {
+                script {
+                    // Replace with your test steps
+                    sh 'make test'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
             script {
                 def prNumber = env.CHANGE_ID
                 def commitSHA = env.CHANGE_TARGET
