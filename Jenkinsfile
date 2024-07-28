@@ -1,10 +1,6 @@
 pipeline {
     agent any
-
-    environment {
-        GITHUB_REPO = 'mohamedsherif02/Testmohamedsherif'
-        GITHUB_CREDENTIALS = 'd326ca7e-a2bb-45c7-bf84-216d9a8d97bb'
-    }
+    
 
     stages {
         stage('Checkout') {
