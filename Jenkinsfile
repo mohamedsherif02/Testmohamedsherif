@@ -21,7 +21,7 @@ pipeline {
                 }
             }
         }
-
+post {
        success {
             script {
                 def prNumber = env.CHANGE_ID
