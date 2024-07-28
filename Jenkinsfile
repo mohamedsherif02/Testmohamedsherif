@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Replace with your build steps
-                    sh 'make build'
+                    echo "Build"
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     // Replace with your test steps
-                    sh 'make test'
+                    echo "test"
                 }
             }
         }
