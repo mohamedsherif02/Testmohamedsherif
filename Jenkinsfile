@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         GITHUB_REPO = '<Testmohamedsherif>'
-        GITHUB_CREDENTIALS = '<your-github-credentials-id>'
+        GITHUB_CREDENTIALS = '<mohamedsherif02>'
     }
 
     stages {
