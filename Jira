@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Run jira') {
+            steps {
+                // Run the batch file located in the workspace
+                bat 'jira.bat'
+bat 'sprint.bat'
+            }
+        }
+    }
+}
