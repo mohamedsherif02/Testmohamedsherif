@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+environment {
+    pytest = '/Library/Frameworks/Python.framework/Versions/3.12/bin/pytest'
+}
     stages {
         stage('Setup') {
             steps {
