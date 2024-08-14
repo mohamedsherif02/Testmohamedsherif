@@ -18,7 +18,7 @@ def test_add():
 
 def test_sum_array():
     arr = (ctypes.c_int * 3)(1, 2, 3)
-    assert lib.sum_array(arr, 3) == 8
+    assert lib.sum_array(arr, 3) == 6
     
     arr = (ctypes.c_int * 4)(-1, 1, -2, 2)
     assert lib.sum_array(arr, 4) == 0
