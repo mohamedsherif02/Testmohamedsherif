@@ -1,8 +1,6 @@
 pipeline {
     agent any
-environment {
-    pytest = '/Library/Frameworks/Python.framework/Versions/3.12/bin/pytest'
-}
+
     stages {
         stage('Setup') {
             steps {
@@ -20,8 +18,8 @@ environment {
         }
          stage('Allure and pytest') {
             steps {
-                sh 'pytest test_integration.py'
-                sh 'pytest --alluredir allure_results'
+                sh 'python3 pytest test_integration.py'
+                sh 'python3 pytest --alluredir allure_results'
                 sh 'allure serve'
             }
         }
