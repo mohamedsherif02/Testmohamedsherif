@@ -35,6 +35,7 @@ pipeline {
         
         stage('Generate Allure Report') {
       steps {
+          sh 'bash'
           allure includeProperties: true, jdk: '', results: [[path: 'allure_results']]
       }
   }
