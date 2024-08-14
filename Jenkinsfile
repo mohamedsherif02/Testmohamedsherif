@@ -15,6 +15,7 @@ pipeline {
                 echo 'Running Python Script'
                 sh 'python3 hello_world.py'
             }
+        }
          stage('Allure and pytest') {
             steps {
                 sh 'pytest test_integration.py'
