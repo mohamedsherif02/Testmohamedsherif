@@ -1,8 +1,8 @@
 pipeline {
     agent any
-tools {
-    allure 'Allure'
-}
+// tools {
+//     allure 'Allure'
+// }
     stages {
         stage('Setup') {
             steps {
