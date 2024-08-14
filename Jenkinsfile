@@ -21,8 +21,8 @@ pipeline {
                 sh '''
                 
                 
-                '/Library/Frameworks/Python.framework/Versions/3.12/bin/pytest.exe'   test_integration.py'
-                '/Library/Frameworks/Python.framework/Versions/3.12/bin/pytest.exe' --alluredir allure_results'
+                '/Library/Frameworks/Python.framework/Versions/3.12/bin/pytest'   test_integration.py'
+                '/Library/Frameworks/Python.framework/Versions/3.12/bin/pytest' --alluredir allure_results'
                 
 
 
