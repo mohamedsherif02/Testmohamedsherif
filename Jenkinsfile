@@ -42,7 +42,11 @@ pipeline {
       }
   }
 
-
+stage('Email notification') {
+            steps {
+                mail bcc: '', body: 'Test', subject: 'Test', to: 'mohamedcherif03@gmail.com'
+            }
+        }
         
     }
    
@@ -61,17 +65,7 @@ pipeline {
 //             )
 //         }
 //     }
-    post {
-    always {
-     emailext (
-                subject: 'Build Notification',
-                body: 'The build is complete.',
-                to: 'ranamohamed2722003@gmail.com',
-                attachmentsPattern: '**/*.log'
-            )
-        
-    }
-}
+ 
 
 }
 
