@@ -72,7 +72,7 @@ pipeline {
         replyTo: '$DEFAULT_REPLYTO', 
         subject: '$DEFAULT_SUBJECT',
         to: '$DEFAULT_RECIPIENTS'
-    throw err
+    
 }
         
     }
