@@ -48,8 +48,6 @@ pipeline {
    
 post {
     always {
-        script {
-            echo "Attempting to send email notification..."
             emailext (
                 to: 'mohamedcherif03@gmail.com',
                 subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
@@ -65,4 +63,4 @@ post {
     }
 }
 
-}
+
