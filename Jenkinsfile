@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        INTEGRATOR_EMAIL = 'mohamedsherifismail@aucegypt.edu'  // Set your integrator's email here
+        INTEGRATOR_EMAIL = 'mohamedcherif03@gmail.com'  // Set your integrator's email here
     }
 // tools {
 //     allure 'Allure'
