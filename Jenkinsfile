@@ -63,20 +63,15 @@ pipeline {
 //     }
     post {
     always {
-       emailext body: '$DEFAULT_CONTENT', 
-        recipientProviders: [
-            [$class: 'CulpritsRecipientProvider'],
-            [$class: 'DevelopersRecipientProvider'],
-            [$class: 'RequesterRecipientProvider']
-        ], 
-        replyTo: '$DEFAULT_REPLYTO', 
-        subject: '$DEFAULT_SUBJECT',
-        to: '$DEFAULT_RECIPIENTS'
-    
-}
+     emailext (
+                subject: 'Build Notification',
+                body: 'The build is complete.',
+                to: 'ranamohamed2722003@gmail.com',
+                attachmentsPattern: '**/*.log'
+            )
         
     }
 }
 
-
+}
 
