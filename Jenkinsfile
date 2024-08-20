@@ -45,21 +45,30 @@ pipeline {
           allure includeProperties: true, jdk: '', results: [[path: 'allure_results']]
       }
   }
+        stage('Determine Committer Email') {
+            steps {
+                script {
+                    // Get the committer's email from the latest commit
+                    def committerEmail = sh(script: "git log -1 --pretty=format:'%ae'", returnStdout: true).trim()
+                    env.COMMITTER_EMAIL = committerEmail
+                }
+            }
+        }
 
-stage('Email notification') {
-    steps {
-        script{
-            def recipientEmails = "${env.INTEGRATOR_EMAIL},${env.COMMITTER_EMAIL}"
-        mail(
-            to: 'recipientEmails',
-            subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
-            body: """
-                <p>Build ${env.BUILD_NUMBER} for job <b>${env.JOB_NAME}</b> finished with status: ${currentBuild.currentResult}</p>
-                <p>Branch: ${env.BRANCH_NAME}</p>
-                <p>Commit: ${env.GIT_COMMIT}</p>
-                <p>Check console output at <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-            """,
-            mimeType: 'text/html'
+        stage('Email notification') {
+            steps {
+                script{
+                    def recipientEmails = "${env.INTEGRATOR_EMAIL},${env.COMMITTER_EMAIL}"
+                mail(
+                    to: 'recipientEmails',
+                    subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+                    body: """
+                        <p>Build ${env.BUILD_NUMBER} for job <b>${env.JOB_NAME}</b> finished with status: ${currentBuild.currentResult}</p>
+                        <p>Branch: ${env.BRANCH_NAME}</p>
+                        <p>Commit: ${env.GIT_COMMIT}</p>
+                        <p>Check console output at <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                    """,
+                    mimeType: 'text/html'
         )
     }
 }
