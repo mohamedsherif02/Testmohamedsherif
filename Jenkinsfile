@@ -43,28 +43,22 @@ pipeline {
   }
 
 stage('Email notification') {
-            steps {
-                mail bcc: '', body: 'Test', subject: 'Test', to: 'mohamedcherif03@gmail.com'
-            }
-        }
-        
+    steps {
+        mail(
+            to: 'mohamedcherif03@gmail.com',
+            subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+            body: """
+                <p>Build ${env.BUILD_NUMBER} for job <b>${env.JOB_NAME}</b> finished with status: ${currentBuild.currentResult}</p>
+                <p>Branch: ${env.BRANCH_NAME}</p>
+                <p>Commit: ${env.GIT_COMMIT}</p>
+                <p>Check console output at <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+            """,
+            mimeType: 'text/html'
+        )
     }
-   
-// post {
-//     always {
-//             emailext (
-//                 to: 'mohamedcherif03@gmail.com',
-//                 subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
-//                 body: """
-//                     <p>Build ${env.BUILD_NUMBER} for job <b>${env.JOB_NAME}</b> finished with status: ${currentBuild.currentResult}</p>
-//                     <p>Branch: ${env.BRANCH_NAME}</p>
-//                     <p>Commit: ${env.GIT_COMMIT}</p>
-//                     <p>Check console output at <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-//                 """,
-//                 mimeType: 'text/html'
-//             )
-//         }
-//     }
+}
+
+
  
 
 }
