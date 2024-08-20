@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    environment {
+        INTEGRATOR_EMAIL = 'mohamedsherifismail@aucegypt.edu'  // Set your integrator's email here
+    }
 // tools {
 //     allure 'Allure'
 // }
@@ -44,8 +48,9 @@ pipeline {
 
 stage('Email notification') {
     steps {
+        def recipientEmails = "${env.INTEGRATOR_EMAIL},${env.COMMITTER_EMAIL}"
         mail(
-            to: 'mohamedcherif03@gmail.com',
+            to: 'recipientEmails',
             subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
             body: """
                 <p>Build ${env.BUILD_NUMBER} for job <b>${env.JOB_NAME}</b> finished with status: ${currentBuild.currentResult}</p>
