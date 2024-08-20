@@ -63,14 +63,20 @@ pipeline {
 //     }
     post {
     always {
-        emailext (
-            to: 'mohamedcherif03@gmail.com',
-            subject: "Test Email - Jenkins Build #${env.BUILD_NUMBER}",
-            body: "This is a test email from Jenkins."
-        )
+       emailext body: '$DEFAULT_CONTENT', 
+        recipientProviders: [
+            [$class: 'CulpritsRecipientProvider'],
+            [$class: 'DevelopersRecipientProvider'],
+            [$class: 'RequesterRecipientProvider']
+        ], 
+        replyTo: '$DEFAULT_REPLYTO', 
+        subject: '$DEFAULT_SUBJECT',
+        to: '$DEFAULT_RECIPIENTS'
+    throw err
+}
+        
     }
 }
 
-}
 
 
