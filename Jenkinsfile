@@ -48,8 +48,8 @@ pipeline {
 
 stage('Email notification') {
     steps {
-        def recipientEmails = "${env.INTEGRATOR_EMAIL},${env.COMMITTER_EMAIL}"
         mail(
+            def recipientEmails = "${env.INTEGRATOR_EMAIL},${env.COMMITTER_EMAIL}"
             to: 'recipientEmails',
             subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
             body: """
